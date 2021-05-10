@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,6 +16,14 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         ManageInput();
+    }
+
+     void LateUpdate()
+    {
+        /*Vector3 clampedPosition = new Vector3(Mathf.Clamp(transform.position.x, -2f, 2f), transform.position.y,
+            transform.position.z);
+        
+        transform.position = clampedPosition;*/
     }
 
     void ManageInput()
