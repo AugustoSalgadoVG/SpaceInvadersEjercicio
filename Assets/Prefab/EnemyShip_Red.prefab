@@ -78,5 +78,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyShip_Red
       objectReference: {fileID: 0}
+    - target: {fileID: 9126028694218043200, guid: 7612ffce49312cc48b4dbf49c98e5ac5,
+        type: 3}
+      propertyPath: life
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9126028694218043200, guid: 7612ffce49312cc48b4dbf49c98e5ac5,
+        type: 3}
+      propertyPath: color
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9126028694218043200, guid: 7612ffce49312cc48b4dbf49c98e5ac5,
+        type: 3}
+      propertyPath: lifes
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7612ffce49312cc48b4dbf49c98e5ac5, type: 3}
