@@ -9,7 +9,8 @@ public class LevelManager : MonoBehaviour
     public GameObject pauseUI;
     public static int totalEnemyMovesToSides = 4;
     public bool isGamePaused = false;
-    public int score;
+    public int pointsPerEnemyDestroyed = 8;
+    private int _score;
     private int _enemiesDestroyedInRound = 0;
     private EnemySpawner _enemySpawner;
     private EnemyShipDestructionManager _enemyShipDestructionManager;
@@ -56,9 +57,9 @@ public class LevelManager : MonoBehaviour
     }
     void UpdateScore()
     {
-        score += 8;
+        _score += pointsPerEnemyDestroyed;
         _enemiesDestroyedInRound++;
-        _scoreCounter.RefreshScoreIndicator(score);
+        _scoreCounter.RefreshScoreIndicator(_score);
     }
     void CheckIfEnemyRespawnIsNeeded()
     {

@@ -7,14 +7,16 @@ public class EnemyShipDestructionManager : MonoBehaviour
 
     private EnemyShipController _enemyShipController;
     private LevelManager _levelManager;
-    
+    private AudioSource _explotionAudio;
+
     /*  Esta es la forma en la que resolví la búsqueda y eliminación de naves adyacentes. Me hacen un poco de ruido
-     *  a la vista los metodos KillAdyacentToEtc porque son todos muy parecidos, pero no me quedaba otra que disparar
-     *  un rayo en cada direccion y al menos haciéndolo en métodos separados se ve más prolijo
+     *  a la vista los metodos KillAdyacentToEtc porque son todos muy parecidos, pero no me quedaba otra que hacer
+     *  un raycast en cada direccion y al menos haciéndolo en métodos separados se ve más prolijo
      */
     void Start()
     {
         _enemyShipController = GetComponent<EnemyShipController>();
+        _explotionAudio = FindObjectOfType<ExplotionAudioSource>().GetComponent<AudioSource>();
         _levelManager = FindObjectOfType<LevelManager>();
     }
     public void Die()
@@ -22,6 +24,7 @@ public class EnemyShipDestructionManager : MonoBehaviour
         _enemyShipController.isAboutToDie = true;
         KillAdyacentShipsWithSameColor();
         Destroy(gameObject);
+        _explotionAudio.Play();
         _levelManager.EnemyShipWasDestroyed();
     }
     void KillAdyacentShipsWithSameColor()

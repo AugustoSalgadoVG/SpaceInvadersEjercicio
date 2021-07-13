@@ -9,6 +9,7 @@ public class EnemyMoveManager : MonoBehaviour
     public event MoveShip OnMoveShip;
     private WaitForSeconds _nextMovement;
     private int _moveDirection = 1;
+    private int _alreadyDoneMovesToSides = 0;
     
     void Start()
     {
@@ -17,24 +18,24 @@ public class EnemyMoveManager : MonoBehaviour
     }
     IEnumerator MoveShipRoutine()
     {
-        int i = 0;
         while (true)
         {
             yield return _nextMovement;
             if (OnMoveShip != null)
             {
-                OnMoveShip(i, _moveDirection);
+                OnMoveShip(_alreadyDoneMovesToSides, _moveDirection);
             }
-            i++;
-            if (i > LevelManager.totalEnemyMovesToSides)
+            _alreadyDoneMovesToSides++;
+            if (_alreadyDoneMovesToSides > LevelManager.totalEnemyMovesToSides)
             {
-                i = 0;
+                _alreadyDoneMovesToSides = 0;
                 _moveDirection = _moveDirection * -1;
             }
         }
     }
     public void RestartMovement()
     {
+        _alreadyDoneMovesToSides = 0;
         _moveDirection = 1;
     }
 }
